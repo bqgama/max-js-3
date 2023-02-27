@@ -13,12 +13,20 @@ const USERS = [
 
 
 function App() {
-  const [users, setUsers] = useState(USERS);
+  const [usersList, setUsersList] = useState(USERS);
+
+  const addUserHandler = (enteredUserData) => {
+    console.log(enteredUserData);
+
+    setUsersList((prevUsers) => {
+      return [...prevUsers, enteredUserData];
+    });
+  };
 
   return (
     <div>
-      <AddUser />
-      <UsersList users={users}/>
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList}/>
     </div>
   );
 }
